@@ -4,3 +4,7 @@
 ## requirments
  - jdk >= 8
  - spring boot 2.2.1
+ 
+## Todo
+ - [ ] User Controller
+ - [ ] Article Controller
