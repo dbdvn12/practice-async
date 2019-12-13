@@ -6,5 +6,5 @@ import java.util.List;
 
 @Component
 public class Tag {
-    private List<String> tags;
+    private String tags;
 }

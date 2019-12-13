@@ -1,9 +1,6 @@
 package ks.ac.finalproject.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -12,14 +9,15 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class UserInfo {
     @Id
     private String id;
 
     private String email;
+    private String password;
     private String token;
     private String username;
     private String bio;
     private String image;
-
 }

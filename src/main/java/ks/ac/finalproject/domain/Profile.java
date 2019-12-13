@@ -1,10 +1,10 @@
 package ks.ac.finalproject.domain;
 
-        import lombok.Getter;
-        import org.springframework.data.mongodb.core.mapping.Document;
+import lombok.Getter;
+import lombok.Setter;
 
-@Document
 @Getter
+@Setter
 public class Profile {
     private UserInfo userInfo;
     private String username;
