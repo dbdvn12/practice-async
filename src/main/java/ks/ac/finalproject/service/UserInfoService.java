@@ -6,6 +6,8 @@ import ks.ac.finalproject.repository.UserInfoRepository;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
+import java.util.UUID;
+
 @Service
 public class UserInfoService {
 
@@ -20,9 +22,13 @@ public class UserInfoService {
                 .username(userDto.getUsername())
                 .email(userDto.getEmail())
                 .password(userDto.getPassword())
+                .bio(null)
+                .id(UUID.randomUUID().toString())
+                .image(null)
+                .token(null)
                 .build());
     }
 
-    public Mono<UserInfo> update()
+//    public Mono<UserInfo> update()
 
 }
