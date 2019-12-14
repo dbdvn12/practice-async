@@ -22,8 +22,8 @@ public class UserInfoService {
                 .username(userDto.getUsername())
                 .email(userDto.getEmail())
                 .password(userDto.getPassword())
-                .bio(null)
                 .id(UUID.randomUUID().toString())
+                .bio(null)
                 .image(null)
                 .token(null)
                 .build());
