@@ -19,13 +19,13 @@ public class PreData implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        userInfoRepository.deleteAll()
-                .thenMany(
-                        Flux.just(1)
-                                .map(user -> new UserInfo(UUID.randomUUID().toString(),
-                                        "wlrnjs121@gmail.com", "12345", null, "wlrnjs",
-                                        null, null))
-                                .flatMap(userInfoRepository::save))
-                .subscribe(System.out::println);
+//        userInfoRepository.deleteAll()
+//                .thenMany(
+//                        Flux.just(1)
+//                                .map(user -> new UserInfo(UUID.randomUUID().toString(),
+//                                        "wlrnjs121@gmail.com", "12345", null, "wlrnjs",
+//                                        null, null))
+//                                .flatMap(userInfoRepository::save))
+//                .subscribe(System.out::println);
     }
 }

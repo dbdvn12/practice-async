@@ -1,7 +1,7 @@
 package ks.ac.finalproject.service;
 
 import ks.ac.finalproject.domain.Article;
-import ks.ac.finalproject.domain.ArticleDto;
+import ks.ac.finalproject.domain.ArticleVo;
 import ks.ac.finalproject.repository.ArticleRepository;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
@@ -22,13 +22,13 @@ public class ArticleService {
         this.articleRepository = articleRepository;
     }
 
-    public Mono<Article> create(ArticleDto articleDto) {
+    public Mono<Article> create(ArticleVo articleVo) {
         Mono<Article> articleMono = articleRepository.save(Article.builder()
-                .title(articleDto.getTitle())
-                .description(articleDto.getDescription())
-                .body(articleDto.getBody())
-                .tags(articleDto.getTags())
-                .slug(toSlug(articleDto.getTitle()))
+                .title(articleVo.getTitle())
+                .description(articleVo.getDescription())
+                .body(articleVo.getBody())
+                .tags(articleVo.getTags())
+                .slug(toSlug(articleVo.getTitle()))
                 .build());
         return articleMono;
     }
