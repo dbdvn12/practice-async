@@ -1,7 +1,7 @@
 package ks.ac.finalproject.controller;
 
 import ks.ac.finalproject.domain.Article;
-import ks.ac.finalproject.domain.ArticleDto;
+import ks.ac.finalproject.domain.ArticleVo;
 import ks.ac.finalproject.service.ArticleService;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -24,8 +24,8 @@ public class ArticleController {
     }
 
     @PostMapping("/api/articles")
-    public ResponseEntity<Mono<Article>> createArticle(@RequestHeader("token") String token, @RequestBody ArticleDto articleDto) {
-        Mono<Article> articleMono=articleService.create(articleDto);
+    public ResponseEntity<Mono<Article>> createArticle(@RequestHeader("token") String token, @RequestBody ArticleVo articleVo) {
+        Mono<Article> articleMono=articleService.create(articleVo);
         token="aa";
         HttpHeaders httpHeaders=new HttpHeaders();
         httpHeaders.set("token",token);

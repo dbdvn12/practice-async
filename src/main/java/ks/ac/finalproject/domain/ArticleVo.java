@@ -11,7 +11,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @Builder
-public class ArticleDto {
+public class ArticleVo {
     private String title;
     private String description;
     private String body;
