@@ -18,27 +18,27 @@ public class ArticleController {
         this.articleService = articleService;
     }
 
-    @GetMapping("/api/articles/{slug}")
-    public Mono<Article> getArticle(@PathVariable String slug) {
-        return articleService.bySlug(slug);
-    }
-
-    @PostMapping("/api/articles")
-    public ResponseEntity<Mono<Article>> createArticle(@RequestHeader("token") String token, @RequestBody ArticleVo articleVo) {
-        Mono<Article> articleMono=articleService.create(articleVo);
-        token="aa";
-        HttpHeaders httpHeaders=new HttpHeaders();
-        httpHeaders.set("token",token);
-        return ResponseEntity.ok().headers(httpHeaders).body(articleMono);
-    }
-
-    @PutMapping("/api/article/{slug}")
-    public Mono<Article> updateArticle(@PathVariable String slug, String title) {
-        return articleService.update(slug, title);
-    }
-
-    @DeleteMapping(produces = MediaType.APPLICATION_JSON_VALUE, value = "/api/article/{slug}")
-    public Mono<Void> deleteArticle(@PathVariable String slug) {
-        return articleService.delete(slug);
-    }
+//    @GetMapping("/api/articles/{slug}")
+//    public Mono<Article> getArticle(@PathVariable String slug) {
+//        return articleService.bySlug(slug);
+//    }
+//
+//    @PostMapping("/api/articles")
+//    public ResponseEntity<Mono<Article>> createArticle(@RequestHeader("token") String token, @RequestBody ArticleVo articleVo) {
+//        Mono<Article> articleMono=articleService.create(articleVo);
+//        token="aa";
+//        HttpHeaders httpHeaders=new HttpHeaders();
+//        httpHeaders.set("token",token);
+//        return ResponseEntity.ok().headers(httpHeaders).body(articleMono);
+//    }
+//
+//    @PutMapping("/api/article/{slug}")
+//    public Mono<Article> updateArticle(@PathVariable String slug, String title) {
+//        return articleService.update(slug, title);
+//    }
+//
+//    @DeleteMapping(produces = MediaType.APPLICATION_JSON_VALUE, value = "/api/article/{slug}")
+//    public Mono<Void> deleteArticle(@PathVariable String slug) {
+//        return articleService.delete(slug);
+//    }
 }
