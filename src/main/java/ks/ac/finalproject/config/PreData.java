@@ -19,6 +19,7 @@ public class PreData implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        userInfoRepository.deleteAll();
 //        userInfoRepository.deleteAll()
 //                .thenMany(
 //                        Flux.just(1)

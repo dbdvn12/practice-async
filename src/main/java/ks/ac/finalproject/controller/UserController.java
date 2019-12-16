@@ -4,12 +4,9 @@ import ks.ac.finalproject.config.PWEncoder;
 import ks.ac.finalproject.domain.LoginVo;
 import ks.ac.finalproject.domain.UserInfo;
 import ks.ac.finalproject.domain.UserVo;
-import ks.ac.finalproject.service.JwtService;
+import ks.ac.finalproject.jwt.JwtUtil;
 import ks.ac.finalproject.service.UserInfoService;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
 import java.io.UnsupportedEncodingException;
@@ -20,12 +17,12 @@ import java.util.UUID;
 public class UserController {
 
     private UserInfoService userInfoService;
-    private JwtService jwtService;
+    private JwtUtil jwtUtil;
     private PWEncoder pwEncoder;
 
-    public UserController(UserInfoService userInfoService, JwtService jwtService, PWEncoder pwEncoder) {
+    public UserController(UserInfoService userInfoService, JwtUtil jwtUtil, PWEncoder pwEncoder) {
         this.userInfoService = userInfoService;
-        this.jwtService = jwtService;
+        this.jwtUtil = jwtUtil;
         this.pwEncoder = pwEncoder;
     }
 
@@ -42,7 +39,7 @@ public class UserController {
         return userInfoService.byEmail(user.getEmail()).flatMap(userInfo -> {
             try {
                 if (pwEncoder.matches(user.getPassword(),userInfo.getPassword()))
-                    userInfo.setToken(jwtService.generateToken(userInfo));
+                    userInfo.setToken(jwtUtil.generateToken(userInfo));
                 else return Mono.error(new Exception());
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
@@ -52,7 +49,8 @@ public class UserController {
     }
 
 //    @RequestMapping(value = "/api/user", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
-//    public Mono<UserInfo> curUser() {
+//    public Mono<UserInfo> curUser(@RequestHeader(value = "Authorization") String token) {
+//
 //    }
 
 //    @RequestMapping(value = "/api/user", method = RequestMethod.PUT, produces = "application/json; charset=utf-8")
